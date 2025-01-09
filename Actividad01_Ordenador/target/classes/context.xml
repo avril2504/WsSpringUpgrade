@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Procesador-->
+	<bean id="procesador" class="modelo.entidad.Procesador">
+		<property name="marca" value="Intel"></property>
+		<property name="modelo" value="Core"></property>
+		<property name="nucleos" value="4"></property>
+		<property name="precio" value="300"></property>
+	</bean>
+	
+	<!-- ram tarjeta grafica-->
+	<bean id="ram" class="modelo.entidad.RAM">
+		<property name="marca" value="Corsair"></property>
+		<property name="capacidad" value="16"></property>
+		<property name="precio" value="100"></property>
+	</bean>
+	
+	<!-- Tarjeta grafica-->
+	<bean id="tarjetaGrafica" class="modelo.entidad.TarjetaGrafica">
+		<property name="marca" value="NVIDIA"></property>
+		<property name="modelo" value="GeForce RTX 3080"></property>
+		<property name="nucleosCUDA" value="8704"></property>
+		<property name="ram" ref="ram"></property>
+		<property name="precio" value="800"></property>
+	</bean>
+	
+	<!-- Placa Base-->
+	<bean id="PlacaBase" class="modelo.entidad.PlacaBase">
+		<property name="marca" value="ASUS"></property>
+		<property name="tipo" value="ATX"></property>
+		<property name="precio" value="190"></property>
+	</bean>
+	
+	<!-- Rams-->
+
+	<bean id="ram2" class="modelo.entidad.RAM">
+		<property name="marca" value="Corsair Vengeance LPX"></property>
+		<property name="capacidad" value="16"></property>
+		<property name="precio" value="100"></property>
+	</bean>
+	
+	<bean id="ram3" class="modelo.entidad.RAM">
+		<property name="marca" value="Crucial Ballistix"></property>
+		<property name="capacidad" value="8"></property>
+		<property name="precio" value="50"></property>
+	</bean>
+
+	<bean id="ram4" class="modelo.entidad.RAM">
+		<property name="marca" value="Team T-Force Vulcan"></property>
+		<property name="capacidad" value="16"></property>
+		<property name="precio" value="80"></property>
+	</bean>
+
+	<!-- Lista rams-->
+	
+	<bean id="listaRams" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="ram2"/>
+				<ref bean="ram3"/>
+				<ref bean="ram4"/>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<!-- Perifericos-->
+
+	<bean id="periferico" class="modelo.entidad.Periferico">
+		<property name="tipo" value="Ratón"></property>
+		<property name="marca" value="Logitech"></property>
+		<property name="precio" value="60"></property>
+	</bean>
+	
+	<bean id="periferico2" class="modelo.entidad.Periferico">
+		<property name="tipo" value="Teclado mecánico"></property>
+		<property name="marca" value="Razer"></property>
+		<property name="precio" value="90"></property>
+	</bean>
+
+	<bean id="periferico3" class="modelo.entidad.Periferico">
+		<property name="tipo" value="Monitor de 24 pulgadas"></property>
+		<property name="marca" value="ASUS"></property>
+		<property name="precio" value="150"></property>
+	</bean>
+	
+		<bean id="periferico4" class="modelo.entidad.Periferico">
+		<property name="tipo" value="Auriculares gaming"></property>
+		<property name="marca" value="HyperX"></property>
+		<property name="precio" value="60"></property>
+	</bean>
+
+	<!-- Lista perifericos-->
+	<bean id="listaPerifericos" class="java.util.ArrayList">
+			<constructor-arg>
+				<list>
+					<ref bean="periferico"/>
+					<ref bean="periferico2"/>
+					<ref bean="periferico3"/>
+					<ref bean="periferico4"/>
+				</list>
+			</constructor-arg>
+		</bean>
+		
+	<!-- Ordenador-->
+	<bean id="Ordenador" class="modelo.entidad.Ordenador">
+		<property name="precio" value="900"></property>
+		<property name="procesador" ref="procesador"></property>
+		<property name="placaBase" ref="PlacaBase"></property>
+		<property name="listaRAMs" ref="listaRams"></property>
+		<property name="listaPerifericos" ref="listaPerifericos"></property>
+		<property name="tarjetaGrafica" ref="tarjetaGrafica"></property>
+	</bean>
+
+</beans>
